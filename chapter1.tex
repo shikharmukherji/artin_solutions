@@ -1,0 +1,352 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathdots}
+
+\title{Chapter 1}
+\author{Shikhar Mukherji}
+\date{June 2021}
+
+\setlength{\parindent}{0pt}
+\begin{document}
+
+\maketitle
+
+\section*{Section 1: The Basic Operations}
+
+\subsection*{Exercise 1.1}
+
+$a_{21}=2$; $a_{23}=8$.
+
+\subsection*{Exercise 1.2}
+
+\[
+    \begin{bmatrix}
+    1 & 2 & 3\\
+    3 & 3 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+    -8 & -4\\
+    9 & 5\\
+    -3 & -2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1 & 0\\
+    0 & 1
+    \end{bmatrix}.
+\]
+
+\[
+    \begin{bmatrix}
+    1 & 4\\
+    1 & 2
+    \end{bmatrix}
+    \begin{bmatrix}
+    6 & -4\\
+    3 & 2\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    18 & 4\\
+    12 & 0
+    \end{bmatrix}.
+\]
+
+\subsection*{Exercise 1.3}
+
+\[
+    AB
+    =
+    \begin{bmatrix}
+    a_1 b_1 + a_2 b_2 + \dots + a_n b_n
+    \end{bmatrix}.
+\]
+
+\[
+    BA
+    =
+    \begin{bmatrix}
+    a_1 b_1 & a_2 b_1 & a_3 b_1 & \dots & a_n b_1\\
+    a_1 b_2 & a_2 b_2 & a_3 b_2 & \dots & a_n b_2\\
+    \vdots \\
+    a_1 b_n & a_2 b_n & a_3 b_n & \dots & a_n b_n\\
+    \end{bmatrix}.
+\]
+
+\subsection*{Exercise 1.4}
+
+\subsection*{Exercise 1.5}
+
+The $(i,j)^{\text{th}}$ entry of the matrix $AB$ is
+
+$$
+\sum_{k=1}^m A_{i,k} B_{k,j},
+$$
+
+which requires $m$ multiplications to compute. $AB$ has $ln$  entries, so the total number of multiplications is $lnm$.\\
+
+
+Since $AB$ is an $l\times n$ matrix, the above tells us that the product $(AB)C$ takes $lnp$ multiplications. Similarly, since $BC$ is an $m\times p$ matrix, the product $A(BC)$ takes $lmp$ multiplications. Thus, if $m>n$ we compute the product in the order $(AB)C$, and if $m<n$ we compute the product in the order $A(BC)$ (if they are equal the order does not matter).
+
+\subsection*{Exercise 1.6}
+
+\[
+    \begin{bmatrix}
+    1 & a\\
+    0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+    1 & b\\
+    0 & 1\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1 & a+b\\
+    0 & 1
+    \end{bmatrix}.
+\]
+
+Setting $b=a$ in the above, it is clear that
+
+\[
+    \begin{bmatrix}
+    1 & a\\
+    0 & 1\\
+    \end{bmatrix}^n
+    =
+    \begin{bmatrix}
+    1 & na\\
+    0 & 1
+    \end{bmatrix}.
+\]
+
+\subsection*{Exercise 1.7}
+
+We claim that,
+
+\[
+    \begin{bmatrix}
+    1 & 1 & 1\\
+    0 & 1 & 1\\
+    0 & 0 & 1\\
+    \end{bmatrix}^n
+    =
+    \begin{bmatrix}
+    1 & n & \dfrac{n(n+1)}{2}\\
+    0 & 1 & n\\
+    0 & 0 & 1\\
+    \end{bmatrix}.
+\]
+
+Clearly the case when $n=1$ is true. Suppose that the above holds for some integer $k\geq 1$. Then,
+
+\begin{gather*}
+    \begin{bmatrix}
+    1 & 1 & 1\\
+    0 & 1 & 1\\
+    0 & 0 & 1\\
+    \end{bmatrix}^{k+1}
+    =
+    \begin{bmatrix}
+    1 & 1 & 1\\
+    0 & 1 & 1\\
+    0 & 0 & 1\\
+    \end{bmatrix}^k
+    \begin{bmatrix}
+    1 & 1 & 1\\
+    0 & 1 & 1\\
+    0 & 0 & 1\\
+    \end{bmatrix}\\ \\
+    =
+    \begin{bmatrix}
+    1 & k & \dfrac{k(k+1)}{2}\\
+    0 & 1 & k\\
+    0 & 0 & 1\\
+    \end{bmatrix}
+    \begin{bmatrix}
+    1 & 1 & 1\\
+    0 & 1 & 1\\
+    0 & 0 & 1\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1 & k+1 & \dfrac{(k+1)(k+2)}{2}\\
+    0 & 1 & k+1\\
+    0 & 0 & 1\\
+    \end{bmatrix},
+\end{gather*}
+
+where the final step can be checked by computing the matrix product. Thus, the claim follows by induction.
+
+\subsection*{Exercise 1.8}
+
+
+
+\subsection*{Exercise 1.9}
+
+\subsubsection*{a)}
+
+Let $A,B$ be $n\times n$ matrices, and let $C=A+B$ and $D=A-B$. Then,
+
+\begin{gather*}
+(CD)_{i,j} = \sum_{k=1}^n C_{i,k} D_{k,j} = \sum_{k=1}^n (A_{i,k} + B_{i,k}) (A_{k,j} - B_{k,j}) \\
+= \sum_{k=1}^n A_{i,k} A_{k,j} - A_{i,k} B_{k,j} + B_{i,k} A_{k,j} - B_{i,k}B_{k,j} \\
+= A^2_{i,j} - (AB)_{i,j} + (BA)_{i,j} - B^2_{i,j}.
+\end{gather*}
+
+Thus, for the $(i,j)^{\text{th}}$ entry of $(A+B)(A-B)$ to be the same as $A^2 - B^2$, we must have $(AB)_{i,j} = (BA)_{i,j}$. In other words, $A$ and $B$ must commute.
+
+\subsubsection*{b)}
+
+We compute the $(i,j)^{\text{th}}$ terms of consecutive powers of $(A+B)$.\\
+
+$$
+(A+B)_{ij}=A_{ij}+B_{ij}.
+$$
+
+\begin{gather*}
+    (A+B)^2_{ij} = \sum_{k=1}^n (A+B)_{ik} (A+B)_{kj} = \sum_{k=1}^n (A_{ik} + B_{ik}) (A_{kj} + B_{kj}) \\
+    = \sum_{k=1}^n A_{ik}A_{kj} + A_{ik}B_{kj} + B_{ik}A_{kj} + B_{ik}B_{kj} \\
+    = A^2_{ij} + (AB)_{ij} + (BA)_{ij} + B^2_{ij}.
+\end{gather*}
+
+\begin{gather*}
+    (A+B)^3_{ij} = \sum_{k=1}^n (A+B)^2_{ik} (A+B)_{kj}\\
+    = \sum_{k=1}^n (A^2_{ik} + (AB)_{ik} + (BA)_{ik} + B^2_{ik})(A_{kj} + B_{kj}) \\
+    = \sum_{k=1}^n A^2_{ik}A_{kj} + (AB)_{ik}A_{kj} + (BA)_{ik}A_{kj} + B^2_{ik}A_{kj} + A^2_{ik}B_{kj} + (AB)_{ik}B_{kj} + (BA)_{ik}B_{kj} + B^2_{ik}B_{kj} \\
+    = A^3_{ij} + ABA_{ij} + BA^2_{ij} + B^2A_{ij} + A^2B_{ij} + AB^2_{ij} + BAB_{ij} + B^3_{ij}.
+\end{gather*}\\
+
+Thus, $(A+B)^3 = A^3 + ABA + BA^2 + B^2A + A^2B + AB^2 + BAB + B^3$.
+
+\subsection*{Exercise 1.10}
+\subsection*{Exercise 1.11}
+\subsection*{Exercise 1.12}
+\subsection*{Exercise 1.13}
+\subsection*{Exercise 1.14}
+\subsection*{Exercise 1.15}
+
+
+\section*{Section 2: Row Reduction}
+
+\subsection*{Exercise 2.1}
+\subsection*{Exercise 2.2}
+\subsection*{Exercise 2.3}
+\subsection*{Exercise 2.4}
+
+Let $x_2=a$, $x_3=b$, $x_4=c$. Then the set of solutions is $(x_1,x_2,x_3,x_4)=(3-a-2b+c,a,b,c)$ for arbitrary values of $a,b$ and $c$.
+
+\subsection*{Exercise 2.5}
+\subsection*{Exercise 2.6}
+\subsection*{Exercise 2.7}
+\subsection*{Exercise 2.8}
+\subsection*{Exercise 2.9}
+
+\subsubsection*{a)}
+\subsubsection*{b)}
+
+\subsection*{Exercise 2.10}
+
+\section*{Section 3: The Matrix Transpose}
+
+\subsection*{Exercise 3.1}
+
+Using the rules in $(1.3.1)$, $(BB^t)^t = (B^t)^tB^t = BB^t$ and $(B+B^t)^t = B^t + (B^t)^t = B^t + B = B + B^t$.\\
+
+It suffices to show that $A^t(A^{-1})^t=(A^{-1})^tA^t=I$. But, $A^t(A^{-1})^t=(A^{-1}A)^t = I^t = I$, and $(A^{-1})^tA^t = (AA^{-1})^t = I^t = I$.
+
+\subsection*{Exercise 3.2}
+
+If $A$ and $B$ commute, then $(AB)^t=B^tA^t=BA=AB$, so the product $AB$ is symmetric. Conversely, if the product $AB$ is symmetric, then $AB=(AB)^t=B^tA^t=BA$, so $A$ and $B$ commute.
+
+\subsection*{Exercise 3.3}
+\subsection*{Exercise 3.4}
+
+\section*{Section 4: Determinants}
+
+\subsection*{Exercise 4.1}
+\subsection*{Exercise 4.2}
+\subsection*{Exercise 4.3}
+\subsection*{Exercise 4.4}
+
+Since each of the $n$ rows of $A$ is multiplied by $-1$ to obtain $-A$, Theorem $1.4.10\text{ (d)}$ tells us that $\text{det}(-A)=(-1)^n\text{det(A)}$.
+
+\subsection*{Exercise 4.5}
+\subsection*{Exercise 4.6}
+
+\section*{Section 5: Permutation Matrices}
+
+\subsection*{Exercise 5.1}
+\subsection*{Exercise 5.2}
+
+\subsubsection*{a)}
+
+\[
+    P=
+    \begin{bmatrix}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1\\
+    1 & 0 & 0 & 0\\
+    0 & 0 & 1 & 0
+    \end{bmatrix}
+\]
+
+\subsubsection*{b)}
+
+
+
+\subsubsection*{c)}
+
+$\text{sign}(p)=\text{det}(P)=-1$.
+
+\subsection*{Exercise 5.3}
+\subsection*{Exercise 5.4}
+
+\[
+    P=
+    \sum_{i=1}^n E_{p(i), i} = \sum_{i=1}^n E_{n-i+1, i} =
+    \begin{bmatrix}
+    &&&&&&1\\
+    &&&&&1&\\
+    &&&&1&&\\
+    &&&\iddots &&&\\
+    &&1&&&&\\
+    &1&&&&\\
+    1&&&&&\\
+    \end{bmatrix}
+\]
+
+For even $n$, the cycle decomposition of $p$ is $(1\text{ }n)(2\text{ }n-1)(3\text{ }n-2)\dots (\frac{n}{2}\text{ }\frac{n}{2}+1)$. For odd $n$, it is $(1\text{ }n)(2\text{ }n-1)(3\text{ }n-2)\dots (\frac{n-1}{2}\text{ }\frac{n+3}{2})$.\\
+
+It takes $\lfloor\frac{n}{2}\rfloor$ row interchanges to row reduce $P$ to the identity, and so $\text{sign}(p)=(-1)^{\lfloor\frac{n}{2}\rfloor}$.
+
+\subsection*{Exercise 5.5}
+
+\section*{Section 6: Other Formulas For The Determinant}
+
+\subsection*{Exercise 6.1}
+
+\subsubsection*{a)}
+\subsubsection*{b)}
+\subsubsection*{c)}
+
+\subsection*{Exercise 6.2}
+
+\section*{Miscellaneous Problems}
+
+\subsection*{Exercise M.1}
+\subsection*{Exercise M.2}
+\subsection*{Exercise M.3}
+\subsection*{Exercise M.4}
+\subsection*{Exercise M.5}
+\subsection*{Exercise M.6}
+\subsection*{Exercise M.7}
+\subsection*{Exercise M.8}
+\subsection*{Exercise M.9}
+\subsection*{Exercise M.10}
+\subsection*{Exercise M.11}
+
+\end{document}
